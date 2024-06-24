@@ -21,3 +21,14 @@ func main() {
 
 	router := gin.Default()
 
+	router.GET("/hello", func(c *gin.Context) {
+		c.String(200, "Hello, MagicStreamMovies!")
+	})
+
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Println("Warning: unable to find .env file")
+	}
+
+	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
+
