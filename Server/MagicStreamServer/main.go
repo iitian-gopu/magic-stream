@@ -32,3 +32,15 @@ func main() {
 
 	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
 
+	var origins []string
+	if allowedOrigins != "" {
+		origins = strings.Split(allowedOrigins, ",")
+		for i := range origins {
+			origins[i] = strings.TrimSpace(origins[i])
+			log.Println("Allowed Origin:", origins[i])
+		}
+	} else {
+		origins = []string{"http://localhost:5173"}
+		log.Println("Allowed Origin: http://localhost:5173")
+	}
+
