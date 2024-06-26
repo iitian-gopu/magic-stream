@@ -66,3 +66,14 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to disconnect from MongoDB: %v", err)
 		}
+
+	}()
+
+	routes.SetupUnProtectedRoutes(router, client)
+	routes.SetupProtectedRoutes(router, client)
+
+	if err := router.Run(":8080"); err != nil {
+		fmt.Println("Failed to start server", err)
+	}
+
+}
