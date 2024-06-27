@@ -22,3 +22,15 @@ func Connect() *mongo.Client {
 
 	if MongoDb == "" {
 		log.Fatal("MONGODB_URI not set!")
+	}
+
+	fmt.Println("MongoDB URI: ", MongoDb)
+
+	clientOptions := options.Client().ApplyURI(MongoDb)
+
+	client, err := mongo.Connect(clientOptions)
+
+	if err != nil {
+		return nil
+	}
+
