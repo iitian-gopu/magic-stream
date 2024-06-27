@@ -10,3 +10,15 @@ import (
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
+func Connect() *mongo.Client {
+
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Println("Warning: unable to fund .env file")
+	}
+
+	MongoDb := os.Getenv("MONGODB_URI")
+
+	if MongoDb == "" {
+		log.Fatal("MONGODB_URI not set!")
