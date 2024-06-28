@@ -34,3 +34,15 @@ func Connect() *mongo.Client {
 		return nil
 	}
 
+	return client
+}
+
+//var Client *mongo.Client = DBInstance()
+
+func OpenCollection(collectionName string, client *mongo.Client) *mongo.Collection {
+
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Println("Warning: unable to find .env file")
+	}
+
