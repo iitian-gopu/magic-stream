@@ -56,3 +56,22 @@ func GenerateAllTokens(email, firstName, lastName, role, userId string) (string,
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * 7 * time.Hour)),
 		},
+	}
+	refreshToken := jwt.NewWithClaims(jwt.SigningMethodHS256, refreshClaims)
+	signedRefreshToken, err := refreshToken.SignedString([]byte(SECRET_REFRESH_KEY))
+
+	if err != nil {
+		return "", "", err
+	}
+
+	return signedToken, signedRefreshToken, nil
+
+}
+
+func UpdateAllTokens(userId, token, refreshToken string, client *mongo.Client) (err error) {
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
+
+	updateAt, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+
+	updateData := bson.M{
