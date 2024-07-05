@@ -37,3 +37,22 @@ func GenerateAllTokens(email, firstName, lastName, role, userId string) (string,
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 		},
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	signedToken, err := token.SignedString([]byte(SECRET_KEY))
+
+	if err != nil {
+		return "", "", err
+	}
+
+	refreshClaims := &SignedDetails{
+		Email:     email,
+		FirstName: firstName,
+		LastName:  lastName,
+		Role:      role,
+		UserId:    userId,
+		RegisteredClaims: jwt.RegisteredClaims{
+			Issuer:    "MagicStream",
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * 7 * time.Hour)),
+		},
