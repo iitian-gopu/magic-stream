@@ -75,3 +75,22 @@ func UpdateAllTokens(userId, token, refreshToken string, client *mongo.Client) (
 	updateAt, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
 	updateData := bson.M{
+		"$set": bson.M{
+			"token":         token,
+			"refresh_token": refreshToken,
+			"update_at":     updateAt,
+		},
+	}
+
+	var userCollection *mongo.Collection = database.OpenCollection("users", client)
+
+	_, err = userCollection.UpdateOne(ctx, bson.M{"user_id": userId}, updateData)
+
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetAccessToken(c *gin.Context) (string, error) {
+	// authHeader := c.Request.Header.Get("Authorization")
