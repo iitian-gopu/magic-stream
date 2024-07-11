@@ -77,3 +77,42 @@ func GetMovie(client *mongo.Client) gin.HandlerFunc {
 
 	}
 }
+
+func AddMovie(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ctx, cancel := context.WithTimeout(c, 100*time.Second)
+		defer cancel()
+
+		var movie models.Movie
+		if err := c.ShouldBindJSON(&movie); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
+			return
+		}
+
+		if err := validate.Struct(movie); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Validation failed", "details": err.Error()})
+			return
+		}
+		var movieCollection *mongo.Collection = database.OpenCollection("movies", client)
+
+		result, err := movieCollection.InsertOne(ctx, movie)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to add movie"})
+			return
+		}
+
+		c.JSON(http.StatusCreated, result)
+
+	}
+}
+
+func AdminReviewUpdate(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+
+		role, err := utils.GetRoleFromContext(c)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Role not found in context"})
+			return
+		}
+
