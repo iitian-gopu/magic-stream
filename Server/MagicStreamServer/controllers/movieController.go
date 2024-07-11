@@ -116,3 +116,42 @@ func AdminReviewUpdate(client *mongo.Client) gin.HandlerFunc {
 			return
 		}
 
+		if role != "ADMIN" {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "User must be part of the ADMIN role"})
+			return
+		}
+
+		movieId := c.Param("imdb_id")
+		if movieId == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Movie Id required"})
+			return
+		}
+		var req struct {
+			AdminReview string `json:"admin_review"`
+		}
+		var resp struct {
+			RankingName string `json:"ranking_name"`
+			AdminReview string `json:"admin_review"`
+		}
+
+		if err := c.ShouldBind(&req); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request body"})
+			return
+		}
+		sentiment, rankVal, err := GetReviewRanking(req.AdminReview, client, c)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error getting review ranking"})
+			return
+		}
+
+		filter := bson.D{{Key: "imdb_id", Value: movieId}}
+
+		update := bson.M{
+			"$set": bson.M{
+				"admin_review": req.AdminReview,
+				"ranking": bson.M{
+					"ranking_value": rankVal,
+					"ranking_name":  sentiment,
+				},
+			},
+		}
