@@ -155,3 +155,42 @@ func AdminReviewUpdate(client *mongo.Client) gin.HandlerFunc {
 				},
 			},
 		}
+		var ctx, cancel = context.WithTimeout(c, 100*time.Second)
+		defer cancel()
+
+		var movieCollection *mongo.Collection = database.OpenCollection("movies", client)
+
+		result, err := movieCollection.UpdateOne(ctx, filter, update)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error updating movie"})
+			return
+		}
+
+		if result.MatchedCount == 0 {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Movie not found"})
+			return
+		}
+		resp.RankingName = sentiment
+		resp.AdminReview = req.AdminReview
+
+		c.JSON(http.StatusOK, resp)
+
+	}
+}
+
+func GetReviewRanking(admin_review string, client *mongo.Client, c *gin.Context) (string, int, error) {
+	rankings, err := GetRankings(client, c)
+
+	if err != nil {
+		return "", 0, err
+	}
+
+	sentimentDelimited := ""
+
+	for _, ranking := range rankings {
+		if ranking.RankingValue != 999 {
+			sentimentDelimited = sentimentDelimited + ranking.RankingName + ","
+		}
+	}
+
