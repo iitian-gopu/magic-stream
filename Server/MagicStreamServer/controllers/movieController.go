@@ -194,3 +194,43 @@ func GetReviewRanking(admin_review string, client *mongo.Client, c *gin.Context)
 		}
 	}
 
+	sentimentDelimited = strings.Trim(sentimentDelimited, ",")
+
+	err = godotenv.Load(".env")
+
+	if err != nil {
+		log.Println("Warning: .env file not found")
+	}
+
+	OpenAiApiKey := os.Getenv("OPENAI_API_KEY")
+
+	if OpenAiApiKey == "" {
+		return "", 0, errors.New("could not read OPENAI_API_KEY")
+	}
+
+	llm, err := openai.New(openai.WithToken(OpenAiApiKey))
+
+	if err != nil {
+		return "", 0, err
+	}
+
+	base_prompt_template := os.Getenv("BASE_PROMPT_TEMPLATE")
+
+	base_prompt := strings.Replace(base_prompt_template, "{rankings}", sentimentDelimited, 1)
+
+	response, err := llm.Call(c, base_prompt+admin_review)
+
+	if err != nil {
+		return "", 0, err
+	}
+	rankVal := 0
+
+	for _, ranking := range rankings {
+		if ranking.RankingName == response {
+			rankVal = ranking.RankingValue
+			break
+		}
+	}
+	return response, rankVal, nil
+
+}
