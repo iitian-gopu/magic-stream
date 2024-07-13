@@ -234,3 +234,42 @@ func GetReviewRanking(admin_review string, client *mongo.Client, c *gin.Context)
 	return response, rankVal, nil
 
 }
+
+func GetRankings(client *mongo.Client, c *gin.Context) ([]models.Ranking, error) {
+	var rankings []models.Ranking
+
+	var ctx, cancel = context.WithTimeout(c, 100*time.Second)
+	defer cancel()
+
+	var rankingCollection *mongo.Collection = database.OpenCollection("rankings", client)
+
+	cursor, err := rankingCollection.Find(ctx, bson.D{})
+
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	if err := cursor.All(ctx, &rankings); err != nil {
+		return nil, err
+	}
+
+	return rankings, nil
+
+}
+
+func GetRecommendedMovies(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		userId, err := utils.GetUserIdFromContext(c)
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "User Id not found in context"})
+		}
+
+		favourite_genres, err := GetUsersFavouriteGenres(userId, client, c)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		err = godotenv.Load(".env")
