@@ -25,3 +25,30 @@ func HashPassword(password string) (string, error) {
 	return string(HashPassword), nil
 
 }
+
+func RegisterUser(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var user models.User
+
+		if err := c.ShouldBindJSON(&user); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input data"})
+			return
+		}
+		validate := validator.New()
+
+		if err := validate.Struct(user); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Validation failed", "details": err.Error()})
+			return
+		}
+
+		hashedPassword, err := HashPassword(user.Password)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to hash password"})
+			return
+		}
+
+		var ctx, cancel = context.WithTimeout(c, 100*time.Second)
+		defer cancel()
+
+		var userCollection *mongo.Collection = database.OpenCollection("users", client)
