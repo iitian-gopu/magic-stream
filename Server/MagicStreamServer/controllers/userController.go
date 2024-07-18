@@ -52,3 +52,30 @@ func RegisterUser(client *mongo.Client) gin.HandlerFunc {
 		defer cancel()
 
 		var userCollection *mongo.Collection = database.OpenCollection("users", client)
+
+		count, err := userCollection.CountDocuments(ctx, bson.D{{Key: "email", Value: user.Email}})
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to check existing user"})
+			return
+		}
+		if count > 0 {
+			c.JSON(http.StatusConflict, gin.H{"error": "User already exists"})
+			return
+		}
+		user.UserID = bson.NewObjectID().Hex()
+		user.CreatedAt = time.Now()
+		user.UpdatedAt = time.Now()
+		user.Password = hashedPassword
+
+		result, err := userCollection.InsertOne(ctx, user)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create user"})
+			return
+		}
+
+		c.JSON(http.StatusCreated, result)
+
+	}
+
