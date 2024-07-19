@@ -132,3 +132,30 @@ func LoginUser(client *mongo.Client) gin.HandlerFunc {
 			SameSite: http.SameSiteNoneMode,
 		})
 		http.SetCookie(c.Writer, &http.Cookie{
+			Name:  "refresh_token",
+			Value: refreshToken,
+			Path:  "/",
+			// Domain:   "localhost",
+			MaxAge:   604800,
+			Secure:   true,
+			HttpOnly: true,
+			SameSite: http.SameSiteNoneMode,
+		})
+
+		c.JSON(http.StatusOK, models.UserResponse{
+			UserId:    foundUser.UserID,
+			FirstName: foundUser.FirstName,
+			LastName:  foundUser.LastName,
+			Email:     foundUser.Email,
+			Role:      foundUser.Role,
+			//Token:           token,
+			//RefreshToken:    refreshToken,
+			FavouriteGenres: foundUser.FavouriteGenres,
+		})
+
+	}
+}
+
+func LogoutHandler(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Clear the access_token cookie
