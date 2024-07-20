@@ -186,3 +186,30 @@ func LogoutHandler(client *mongo.Client) gin.HandlerFunc {
 		// 	"/",
 		// 	"localhost", // Adjust to your domain
 		// 	true,        // Use true in production with HTTPS
+		// 	true,        // HttpOnly
+		// )
+		http.SetCookie(c.Writer, &http.Cookie{
+			Name:  "access_token",
+			Value: "",
+			Path:  "/",
+			// Domain:   "localhost",
+			MaxAge:   -1,
+			Secure:   true,
+			HttpOnly: true,
+			SameSite: http.SameSiteNoneMode,
+		})
+
+		// // Clear the refresh_token cookie
+		// c.SetCookie(
+		// 	"refresh_token",
+		// 	"",
+		// 	-1,
+		// 	"/",
+		// 	"localhost",
+		// 	true,
+		// 	true,
+		// )
+		http.SetCookie(c.Writer, &http.Cookie{
+			Name:     "refresh_token",
+			Value:    "",
+			Path:     "/",
