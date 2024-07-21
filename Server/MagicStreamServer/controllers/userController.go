@@ -240,3 +240,29 @@ func RefreshTokenHandler(client *mongo.Client) gin.HandlerFunc {
 		if err != nil || claim == nil {
 			fmt.Println("error", err.Error())
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid or expired refresh token"})
+			return
+		}
+
+		var userCollection *mongo.Collection = database.OpenCollection("users", client)
+
+		var user models.User
+		err = userCollection.FindOne(ctx, bson.D{{Key: "user_id", Value: claim.UserId}}).Decode(&user)
+
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "User not found"})
+			return
+		}
+
+		newToken, newRefreshToken, _ := utils.GenerateAllTokens(user.Email, user.FirstName, user.LastName, user.Role, user.UserID)
+		err = utils.UpdateAllTokens(user.UserID, newToken, newRefreshToken, client)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error updating tokens"})
+			return
+		}
+
+		c.SetCookie("access_token", newToken, 86400, "/", "localhost", true, true)          // expires in 24 hours
+		c.SetCookie("refresh_token", newRefreshToken, 604800, "/", "localhost", true, true) //expires in 1 week
+
+		c.JSON(http.StatusOK, gin.H{"message": "Tokens refreshed"})
+	}
+}
