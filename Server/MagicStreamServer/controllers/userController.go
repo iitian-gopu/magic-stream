@@ -213,3 +213,30 @@ func LogoutHandler(client *mongo.Client) gin.HandlerFunc {
 			Name:     "refresh_token",
 			Value:    "",
 			Path:     "/",
+			MaxAge:   -1,
+			Secure:   true,
+			HttpOnly: true,
+			SameSite: http.SameSiteNoneMode,
+		})
+
+		c.JSON(http.StatusOK, gin.H{"message": "Logged out successfully"})
+	}
+}
+
+func RefreshTokenHandler(client *mongo.Client) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var ctx, cancel = context.WithTimeout(c, 100*time.Second)
+		defer cancel()
+
+		refreshToken, err := c.Cookie("refresh_token")
+
+		if err != nil {
+			fmt.Println("error", err.Error())
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Unable to retrieve refresh token from cookie"})
+			return
+		}
+
+		claim, err := utils.ValidateRefreshToken(refreshToken)
+		if err != nil || claim == nil {
+			fmt.Println("error", err.Error())
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid or expired refresh token"})
