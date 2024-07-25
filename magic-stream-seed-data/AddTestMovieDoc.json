@@ -9,3 +9,13 @@
                 "genre_name": "Sci-fi"
             },
             {
+                "genre_id": 4,
+                "genre_name": "Fantasy"
+            }
+        ],
+        "admin_review": "",
+        "ranking": {
+            "ranking_value": 4,
+            "ranking_name": "bad"
+        }
+    }
