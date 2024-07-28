@@ -1,0 +1,10 @@
+[
+    {
+        "genre_id": 1,
+        "genre_name": "Comedy"
+    },
+    {
+        "genre_id": 2,
+        "genre_name": "Drama"
+    },
+    {
