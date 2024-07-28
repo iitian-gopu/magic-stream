@@ -8,3 +8,12 @@
         "genre_name": "Drama"
     },
     {
+        "genre_id": 3,
+        "genre_name": "Western"
+    },
+    {
+        "genre_id": 4,
+        "genre_name": "Fantasy"
+    },
+    {
+        "genre_id": 5,
