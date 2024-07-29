@@ -27,3 +27,12 @@
         "genre_id": 7,
         "genre_name": "Action"
     },
+    {
+        "genre_id": 8,
+        "genre_name": "Mystery"
+    },
+    {
+        "genre_id": 9,
+        "genre_name": "Crime"
+    }
+]
