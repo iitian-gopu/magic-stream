@@ -28,3 +28,33 @@
             },
             {
                 "genre_id": 1,
+                "genre_name": "Comedy"
+            }
+        ],
+        "admin_review": "This movie is awful.",
+        "ranking": {
+            "ranking_name": "Terrible",
+            "ranking_value": 5
+        }
+    },
+    {
+        "imdb_id": "tt0080339",
+        "title": "Airplane!",
+        "poster_path": "https://image.tmdb.org/t/p/w300/zOiB3p2WTTiwCFgTMnXuDGgzbTN.jpg",
+        "youtube_id": "07pPmCfKi3U",
+        "genre": [
+            {
+                "genre_id": 1,
+                "genre_name": "Comedy"
+            }
+        ],
+        "admin_review": "I didn't love this movie but I didn't hate it either.",
+        "ranking": {
+            "ranking_value": 3,
+            "ranking_name": "Okay"
+        }
+    },
+    {
+        "imdb_id": "tt1119646",
+        "title": "The Hangover",
+        "poster_path": "https://image.tmdb.org/t/p/w300/c15rH9S5JN83UXqu9iM4TQsW6Rl.jpg",
