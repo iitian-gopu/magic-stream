@@ -58,3 +58,33 @@
         "imdb_id": "tt1119646",
         "title": "The Hangover",
         "poster_path": "https://image.tmdb.org/t/p/w300/c15rH9S5JN83UXqu9iM4TQsW6Rl.jpg",
+        "youtube_id": "jj6wcUes1no",
+        "genre": [
+            {
+                "genre_id": 1,
+                "genre_name": "Comedy"
+            }
+        ],
+        "admin_review": "I didn't love this movie but I didn't hate it either.",
+        "ranking": {
+            "ranking_value": 3,
+            "ranking_name": "Okay"
+        }
+    },
+    {
+        "imdb_id": "tt0109040",
+        "title": "Ace Ventura: Pet Detective",
+        "poster_path": "https://image.tmdb.org/t/p/w300/dukxJWd72ffNWfqfFSVFFuym4RG.jpg",
+        "youtube_id": "qjBb1CKLpzE",
+        "genre": [
+            {
+                "genre_id": 1,
+                "genre_name": "Comedy"
+            }
+        ],
+        "admin_review": "This is really not so great.",
+        "ranking": {
+            "ranking_value": 4,
+            "ranking_name": "Bad"
+        }
+    },
