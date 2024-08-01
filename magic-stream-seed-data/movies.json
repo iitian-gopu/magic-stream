@@ -117,3 +117,33 @@
         "genre": [
             {
                 "genre_id": 3,
+                "genre_name": "Western"
+            }
+        ],
+        "admin_review": "I did not like this!",
+        "ranking": {
+            "ranking_value": 4,
+            "ranking_name": "Bad"
+        }
+    },
+    {
+        "imdb_id": "tt0903624",
+        "title": "The Hobbit: An Unexpected Journey",
+        "poster_path": "https://image.tmdb.org/t/p/w300/vdAGcr1F6wJPRryeODVAcy2mU4z.jpg",
+        "youtube_id": "9PSXjr1gbjc",
+        "genre": [
+            {
+                "genre_id": 4,
+                "genre_name": "Fantasy"
+            }
+        ],
+        "admin_review": "The movie was aweful! I really hated it.",
+        "ranking": {
+            "ranking_value": 5,
+            "ranking_name": "Terrible"
+        }
+    },
+    {
+        "imdb_id": "tt0241527",
+        "title": "Harry Potter and the Philosopher's Stone",
+        "poster_path": "https://image.tmdb.org/t/p/w300/e6JYlushXIXK85JGfDHEFHrrNYK.jpg",
