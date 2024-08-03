@@ -266,3 +266,32 @@
                 "genre_id": 5,
                 "genre_name": "Thriller"
             }
+        ],
+        "admin_review": "This was a lovely movie!",
+        "ranking": {
+            "ranking_value": 1,
+            "ranking_name": "Excellent"
+        }
+    },
+    {
+        "imdb_id": "tt0790724",
+        "title": "Jack Reacher",
+        "poster_path": "https://image.tmdb.org/t/p/w300/8sih1uieUopA9zrEO1meNhmm7aO.jpg",
+        "youtube_id": "A7FiWkyevqY",
+        "genre": [
+            {
+                "genre_id": 7,
+                "genre_name": "Action"
+            },
+            {
+                "genre_id": 5,
+                "genre_name": "Thriller"
+            }
+        ],
+        "admin_review": "This might be the worst movie that I have ever seen in my life!",
+        "ranking": {
+            "ranking_value": 5,
+            "ranking_name": "Terrible"
+        }
+    }
+]
