@@ -16,3 +16,11 @@
         "ranking_name": "Okay"
     },
     {
+        "ranking_value": 4,
+        "ranking_name": "Bad"
+    },
+    {
+        "ranking_value": 5,
+        "ranking_name": "Terrible"
+    }
+]
