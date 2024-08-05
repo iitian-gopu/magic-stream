@@ -1,0 +1,11 @@
+[
+    {
+        "user_id": "68385b9981097c6b4042dab4",
+        "first_name": "Bob",
+        "last_name": "Jones",
+        "email": "bobjones@hotmail.com",
+        "password": "$2a$10$FAd/ArLwxQ3WbNE3XKbyveRHidTpW9g84hX2CPr0tWdGGerrP6.3K",
+        "role": "ADMIN",
+        "created_at": {
+            "$date": "2025-05-29T13:05:29.000Z"
+        },
