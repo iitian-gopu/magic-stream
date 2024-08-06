@@ -20,3 +20,14 @@
                 "genre_name": "Comedy"
             },
             {
+                "genre_id": 4,
+                "genre_name": "Fantasy"
+            }
+        ]
+    },
+    {
+        "user_id": "684535a8c3d7e6b4ac1c5203",
+        "first_name": "Sarah",
+        "last_name": "Smith",
+        "email": "sarahsmith@hotmail.com",
+        "password": "$2a$10$w0H8AI/xigWiq0hGsjyfqeWAR5d6oErWE4b7sz9uwCTKMwRIv49YW",
