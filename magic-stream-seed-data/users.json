@@ -9,3 +9,14 @@
         "created_at": {
             "$date": "2025-05-29T13:05:29.000Z"
         },
+        "updated_at": {
+            "$date": "2025-05-29T13:06:51.000Z"
+        },
+        "token": "",
+        "refresh_token": "",
+        "favourite_genres": [
+            {
+                "genre_id": 1,
+                "genre_name": "Comedy"
+            },
+            {
