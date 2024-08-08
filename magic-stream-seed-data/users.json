@@ -31,3 +31,14 @@
         "last_name": "Smith",
         "email": "sarahsmith@hotmail.com",
         "password": "$2a$10$w0H8AI/xigWiq0hGsjyfqeWAR5d6oErWE4b7sz9uwCTKMwRIv49YW",
+        "role": "USER",
+        "created_at": {
+            "$date": "2025-06-08T07:03:04.865Z"
+        },
+        "updated_at": {
+            "$date": "2025-06-23T09:26:11.000Z"
+        },
+        "token": "",
+        "refresh_token": "",
+        "favourite_genres": [
+            {
