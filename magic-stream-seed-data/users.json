@@ -64,3 +64,14 @@
         "role": "USER",
         "created_at": {
             "$date": "2025-06-17T08:48:05.649Z"
+        },
+        "updated_at": {
+            "$date": "2025-06-17T08:48:05.649Z"
+        },
+        "token": "",
+        "refresh_token": "",
+        "favourite_genres": [
+            {
+                "genre_id": 1,
+                "genre_name": "Comedy"
+            },
