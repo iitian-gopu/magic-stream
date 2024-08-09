@@ -53,3 +53,14 @@
                 "genre_id": 8,
                 "genre_name": "Mystery"
             }
+        ]
+    },
+    {
+        "user_id": "68512bc5a29d3bfe81637e3f",
+        "first_name": "Ben",
+        "last_name": "Madison",
+        "email": "benmadison@hotmail.com",
+        "password": "$2a$10$0rCBUYy4ZlTzuxcf20XV1.s7UVTbtkXkARQmzb3vstja4uDnp.NS.",
+        "role": "USER",
+        "created_at": {
+            "$date": "2025-06-17T08:48:05.649Z"
