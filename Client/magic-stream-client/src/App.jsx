@@ -10,3 +10,15 @@ import Layout from './components/Layout';
 import RequiredAuth from './components/RequiredAuth';
 import axiosClient from './api/axiosConfig';
 import useAuth from './hooks/useAuth';
+import StreamMovie from './components/stream/StreamMovie';
+
+import {Route, Routes, useNavigate} from 'react-router-dom'
+
+function App() {
+
+  const navigate = useNavigate();
+  const { auth, setAuth } = useAuth();
+
+  
+  const updateMovieReview = (imdb_id) => {
+      navigate(`/review/${imdb_id}`);
