@@ -22,3 +22,15 @@ function App() {
   
   const updateMovieReview = (imdb_id) => {
       navigate(`/review/${imdb_id}`);
+  };
+   
+  const handleLogout = async () => {
+
+        try {
+            const response = await axiosClient.post("/logout",{user_id: auth.user_id});
+            console.log(response.data);
+            setAuth(null);
+           // localStorage.removeItem('user');
+            console.log('User logged out');
+
+        } catch (error) {
