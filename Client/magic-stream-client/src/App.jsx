@@ -46,3 +46,15 @@ function App() {
         <Route path="/" element={<Home updateMovieReview={updateMovieReview}/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
+        <Route element = {<RequiredAuth/>}>
+            <Route path="/recommended" element={<Recommended/>}></Route>
+            <Route path="/review/:imdb_id" element={<Review/>}></Route>
+            <Route path="/stream/:yt_id" element={<StreamMovie/>}></Route>
+        </Route>
+      </Routes>
+
+    </>
+  )
+}
+
+export default App
