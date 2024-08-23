@@ -34,3 +34,15 @@ function App() {
             console.log('User logged out');
 
         } catch (error) {
+            console.error('Error logging out:', error);
+        } 
+
+    };
+
+  return (
+    <>
+      <Header handleLogout = {handleLogout}/>
+      <Routes path="/" element = {<Layout/>}>
+        <Route path="/" element={<Home updateMovieReview={updateMovieReview}/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
