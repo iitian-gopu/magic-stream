@@ -8,3 +8,13 @@ const axiosPrivate = axios.create({
     'Content-Type': 'application/json',
 
   },
+  withCredentials: true, // important for HTTP-only cookies
+});
+
+// Add a request interceptor to include the token
+// axiosPrivate.interceptors.request.use(
+//   (config) => {
+//     const userString = localStorage.getItem('user'); 
+//     const user = JSON.parse(userString)
+//     if (user) {
+//       config.headers.Authorization = `Bearer ${user?.token}`;
