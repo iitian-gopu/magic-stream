@@ -18,3 +18,12 @@ const axiosPrivate = axios.create({
 //     const user = JSON.parse(userString)
 //     if (user) {
 //       config.headers.Authorization = `Bearer ${user?.token}`;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
+
+export default axiosPrivate;
