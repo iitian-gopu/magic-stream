@@ -18,3 +18,13 @@ export const AuthProvider = ({children}) => {
               } catch (error) {
                         console.error('Failed to parse user from localStorage', error);
                 } finally{
+                    setLoading(false);
+            }
+    },[]);
+    useEffect(()=>{
+        if (auth){
+            localStorage.setItem('user', JSON.stringify(auth));
+        }
+        else{
+            localStorage.removeItem('user');
+        }
