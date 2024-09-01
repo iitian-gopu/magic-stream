@@ -28,3 +28,12 @@ export const AuthProvider = ({children}) => {
         else{
             localStorage.removeItem('user');
         }
+    },[auth])
+
+    return (
+        <AuthContext.Provider value = {{auth,setAuth,loading}}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+export default AuthContext;
