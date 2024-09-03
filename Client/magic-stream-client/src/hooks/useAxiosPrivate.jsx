@@ -22,3 +22,15 @@ const useAxiosPrivate = () =>{
     const processQueue = (error, response = null) => {
         failedQueue.forEach(prom => {
             if (error) {
+            prom.reject(error);
+            } else {
+            prom.resolve(response);
+            }
+        });
+
+        failedQueue = [];
+    };
+
+     useEffect(() => {
+
+        axiosAuth.interceptors.response.use(
