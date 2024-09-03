@@ -34,3 +34,15 @@ const useAxiosPrivate = () =>{
      useEffect(() => {
 
         axiosAuth.interceptors.response.use(
+        response => response,
+        async error => {
+            console.log('⚠ Interceptor caught error:', error);
+            const originalRequest = error.config;
+
+        if (originalRequest.url.includes('/refresh') && error.response.status === 401) {
+            //edge case where the refresh token is invalid or expired
+            console.error('❌ Refresh token has expired or is invalid.');
+            return Promise.reject(error); // fail directly, no retry
+        }
+
+            if (error.response && error.response.status === 401 && !originalRequest._retry) {
