@@ -46,3 +46,15 @@ const useAxiosPrivate = () =>{
         }
 
             if (error.response && error.response.status === 401 && !originalRequest._retry) {
+
+                if (isRefreshing) {
+                return new Promise((resolve, reject) => {
+                failedQueue.push({ resolve, reject });
+                })
+                .then(() => axiosAuth(originalRequest))
+                .catch(err => Promise.reject(err));
+            }
+
+            originalRequest._retry = true;
+            isRefreshing = true;
+
