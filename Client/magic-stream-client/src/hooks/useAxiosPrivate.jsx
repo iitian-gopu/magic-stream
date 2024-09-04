@@ -58,3 +58,15 @@ const useAxiosPrivate = () =>{
             originalRequest._retry = true;
             isRefreshing = true;
 
+            return new Promise((resolve, reject) => {
+                axiosAuth
+                .post('/refresh')
+                .then(() => {
+                
+                    processQueue(null);
+
+                axiosAuth(originalRequest)
+                    .then(resolve)
+                    .catch(reject);
+
+                })
