@@ -82,3 +82,15 @@ const useAxiosPrivate = () =>{
                         isRefreshing = false;
                 });
             });
+            }
+
+            return Promise.reject(error);
+        }
+        );
+
+    }, [auth]);
+
+    return axiosAuth;
+}
+
+export default useAxiosPrivate;
