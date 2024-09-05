@@ -70,3 +70,15 @@ const useAxiosPrivate = () =>{
                     .catch(reject);
 
                 })
+                .catch(refreshError => {
+
+                        processQueue(refreshError, null);
+                        
+                        localStorage.removeItem('user');
+                        setAuth(null); // Clear auth state
+                        reject(refreshError); // fail the original promise chain
+                })
+                .finally(() => {
+                        isRefreshing = false;
+                });
+            });
