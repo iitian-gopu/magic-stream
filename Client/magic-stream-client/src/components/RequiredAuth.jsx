@@ -8,3 +8,12 @@ const RequiredAuth = () => {
 
       if (loading){
         return (<Spinner/>)
+      }
+
+    return auth ? (
+        <Outlet/>
+    ) : (
+        <Navigate to = '/login' state ={{from:location}} replace />
+    );
+};
+export default RequiredAuth;
