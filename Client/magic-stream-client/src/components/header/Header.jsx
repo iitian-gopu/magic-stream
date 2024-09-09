@@ -20,3 +20,14 @@ const Header = ({handleLogout}) => {
                         alt=""
                         src={logo}
                         width="30"
+                        height="30"
+                        className="d-inline-block align-top me-2"
+                    />
+                    Magic Stream
+                </Navbar.Brand>
+
+            <Navbar.Toggle aria-controls="main-navbar-nav" />
+                <Navbar.Collapse>
+                    <Nav className ="me-auto">
+                        <Nav.Link as = {NavLink} to="/">
+                            Home
