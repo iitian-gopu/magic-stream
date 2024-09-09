@@ -9,3 +9,14 @@ import logo from '../../assets/MagicStreamLogo.png';
 
 const Header = ({handleLogout}) => {
     const navigate = useNavigate();
+    const {auth} = useAuth();
+
+
+    return (
+        <Navbar bg="dark" variant='dark' expand="lg" stick="top" className="shadow-sm">
+            <Container>
+                <Navbar.Brand>
+                     <img
+                        alt=""
+                        src={logo}
+                        width="30"
