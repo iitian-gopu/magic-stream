@@ -41,3 +41,14 @@ const Header = ({handleLogout}) => {
                         {auth ? (
                         <>
                             <span className="me-3 text-light">
+                                Hello, <strong>{auth.first_name}</strong>
+                            </span>
+                            <Button variant="outline-light" size="sm" onClick={handleLogout}>
+                                Logout
+                            </Button>
+                        </>
+                        ):(
+                            <>
+                                <Button
+                                    variant="outline-info"
+                                    size="sm"
