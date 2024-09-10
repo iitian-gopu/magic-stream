@@ -31,3 +31,13 @@ const Header = ({handleLogout}) => {
                     <Nav className ="me-auto">
                         <Nav.Link as = {NavLink} to="/">
                             Home
+                        </Nav.Link>
+                        <Nav.Link as = {NavLink} to="/recommended">
+                            Recommended
+                        </Nav.Link>
+                    </Nav>
+    
+                    <Nav className ="ms-auto align-items-center">
+                        {auth ? (
+                        <>
+                            <span className="me-3 text-light">
