@@ -63,3 +63,13 @@ const Header = ({handleLogout}) => {
                                     onClick={() => navigate("/register")}  
                                 >
                                     Register
+                                </Button>                        
+                            </>
+                        )}
+                    </Nav>       
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    )
+}
+export default Header;
