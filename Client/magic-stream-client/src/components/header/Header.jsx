@@ -52,3 +52,14 @@ const Header = ({handleLogout}) => {
                                 <Button
                                     variant="outline-info"
                                     size="sm"
+                                    className="me-2"
+                                    onClick={() => navigate("/login")} 
+                                >
+                                    Login
+                                </Button>
+                                <Button
+                                    variant="info"
+                                    size="sm"
+                                    onClick={() => navigate("/register")}  
+                                >
+                                    Register
