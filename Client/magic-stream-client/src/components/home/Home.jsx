@@ -10,3 +10,15 @@ const Home =({updateMovieReview}) => {
 
     useEffect(() => {
         const fetchMovies = async () => {
+            setLoading(true);
+            setMessage("");
+            try{
+                const response = await axiosClient.get('/movies');
+                setMovies(response.data);
+                if (response.data.length === 0){
+                    setMessage('There are currently no movies available')
+                }
+
+            }catch(error){
+                console.error('Error fetching movies:', error)
+                setMessage("Error fetching movies")
