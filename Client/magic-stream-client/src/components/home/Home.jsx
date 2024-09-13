@@ -22,3 +22,15 @@ const Home =({updateMovieReview}) => {
             }catch(error){
                 console.error('Error fetching movies:', error)
                 setMessage("Error fetching movies")
+            }finally{
+                setLoading(false)
+            }
+        }
+        fetchMovies();
+    }, []);
+
+    return (
+        <>
+            {loading ? (
+                <Spinner/>
+            ):  (
