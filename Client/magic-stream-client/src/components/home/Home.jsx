@@ -34,3 +34,15 @@ const Home =({updateMovieReview}) => {
             {loading ? (
                 <Spinner/>
             ):  (
+                <Movies movies ={movies} updateMovieReview={updateMovieReview} message ={message}/>
+            )}
+        </>
+
+    );
+
+};
+
+export default Home;
+
+
+
