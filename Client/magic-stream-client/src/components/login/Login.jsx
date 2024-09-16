@@ -22,3 +22,15 @@ const Login = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError(null);       
+
+        try {
+            const response = await axiosClient.post('/login', { email, password });
+            console.log(response.data);
+            if (response.data.error) {
+                setError(response.data.error);
+                return;
+            }
+           // console.log(response.data);
+            setAuth(response.data);
