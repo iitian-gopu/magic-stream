@@ -57,3 +57,15 @@ const Login = () => {
                 </div>
                 {error && <div className="alert alert-danger py-2">{error}</div>}
                 <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formBasicEmail" className="mb-3">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            autoFocus
+                        />
+                    </Form.Group>
+
