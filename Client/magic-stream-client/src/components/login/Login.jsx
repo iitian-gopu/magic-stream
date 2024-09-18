@@ -69,3 +69,15 @@ const Login = () => {
                         />
                     </Form.Group>
 
+                    <Form.Group controlId="formBasicPassword" className="mb-3">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Button
