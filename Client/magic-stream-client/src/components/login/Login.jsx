@@ -81,3 +81,15 @@ const Login = () => {
                     </Form.Group>
 
                     <Button
+                        variant="primary"
+                        type="submit"
+                        className="w-100 mb-2"
+                        disabled={loading}
+                        style={{fontWeight: 600, letterSpacing: 1}}
+                    >
+                        {loading ? (
+                            <>
+                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                Logging in...
+                            </>
+                        ) : 'Login'}
