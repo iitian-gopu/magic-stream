@@ -1,0 +1,10 @@
+.movie-card {
+    transition: transform 0.2s;
+
+}
+.movie-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    z-index: 2;
+}
+.play-icon-overlay {
+    position: absolute;
