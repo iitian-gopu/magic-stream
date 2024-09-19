@@ -93,3 +93,14 @@ const Login = () => {
                                 Logging in...
                             </>
                         ) : 'Login'}
+                    </Button>
+                </Form>
+                <div className="text-center mt-3">
+                    <span className="text-muted">Don't have an account? </span>
+                    <Link to="/register" className="fw-semibold">Register here</Link>
+                </div>
+            </div>
+        </Container>
+    )
+}
+export default Login;
