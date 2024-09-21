@@ -9,3 +9,14 @@ const Movie = ({movie,updateMovieReview}) => {
             <Link
                 to={`/stream/${movie.youtube_id}`}
                 style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+            <div className="card h-100 shadow-sm movie-card">
+                <div style={{position:"relative"}}>
+                    <img src={movie.poster_path} alt={movie.title} 
+                        className="card-img-top"
+                        style={{
+                            objectFit: "contain",
+                            height: "250px",
+                            width: "100%"
+                        }}
+                    />
