@@ -41,3 +41,13 @@ const Movie = ({movie,updateMovieReview}) => {
                                 updateMovieReview(movie.imdb_id);
                             }}
                             className="m-3"
+                        >
+                            Review
+                        </Button>
+                    )}
+            </div>
+            </Link>
+        </div>
+    )
+}
+export default Movie;
