@@ -30,3 +30,14 @@ const Movie = ({movie,updateMovieReview}) => {
                 </div>
                 {movie.ranking?.ranking_name && (
                     <span className="badge bg-dark m-3 p-2" style={{fontSize:"1rem"}}>
+                        {movie.ranking.ranking_name}
+                    </span>
+                )}
+                  {updateMovieReview && (
+                        <Button
+                            variant="outline-info"
+                            onClick={e => {
+                                e.preventDefault();
+                                updateMovieReview(movie.imdb_id);
+                            }}
+                            className="m-3"
