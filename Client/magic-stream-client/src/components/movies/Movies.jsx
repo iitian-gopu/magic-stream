@@ -8,3 +8,13 @@ const Movies = ({movies,updateMovieReview, message}) => {
                 {movies && movies.length > 0
                     ? movies.map((movie) => (
                         <Movie key={movie._id} updateMovieReview={updateMovieReview} movie={movie} />
+                    ))
+                    : <h2>{message}</h2>
+                }
+
+            </div>
+
+        </div>
+    )
+}
+export default Movies;
