@@ -9,3 +9,13 @@ const Recommended = () => {
     const [message, setMessage] = useState();
     const axiosPrivate = useAxiosPrivate();
 
+    useEffect(() => {
+        const fetchRecommendedMovies = async () => {
+            setLoading(true);
+            setMessage("");
+
+            try{
+                const response = await axiosPrivate.get('/recommendedmovies');
+                setMovies(response.data);
+            } catch (error){
+                console.error("Error fetching recommended movies:", error)
