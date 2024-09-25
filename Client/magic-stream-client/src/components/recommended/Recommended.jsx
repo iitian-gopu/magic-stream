@@ -19,3 +19,13 @@ const Recommended = () => {
                 setMovies(response.data);
             } catch (error){
                 console.error("Error fetching recommended movies:", error)
+            } finally {
+                setLoading(false);
+            }
+
+        }
+        fetchRecommendedMovies();
+    }, [])
+
+    return (
+        <>
