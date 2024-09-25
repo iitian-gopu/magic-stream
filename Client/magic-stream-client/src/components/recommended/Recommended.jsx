@@ -29,3 +29,13 @@ const Recommended = () => {
 
     return (
         <>
+            {loading ? (
+                <Spinner/>
+            ) :(
+                <Movies movies = {movies} message ={message} />
+            )}
+        </>
+    )
+
+}
+export default Recommended
