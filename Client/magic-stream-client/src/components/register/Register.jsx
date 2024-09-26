@@ -17,3 +17,21 @@ const Register = () => {
 
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const handleGenreChange = (e) => {
+        const options = Array.from(e.target.selectedOptions);
+        setFavouriteGenres(options.map(opt => ({
+            genre_id: Number(opt.value),
+            genre_name: opt.label
+        })));
+    };
+   const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(null);
+        const defaultRole ="USER";
+
+        console.log(defaultRole);
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
