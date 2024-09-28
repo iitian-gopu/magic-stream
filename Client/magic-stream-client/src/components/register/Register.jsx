@@ -35,3 +35,22 @@ const Register = () => {
 
         if (password !== confirmPassword) {
             setError('Passwords do not match.');
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            const payload = {
+                first_name: firstName,
+                last_name: lastName,
+                email,
+                password,
+                role: defaultRole,
+                favourite_genres: favouriteGenres
+            };
+            const response = await axiosClient.post('/register', payload);
+            if (response.data.error) {
+                setError(response.data.error);
+                return;
+            }
