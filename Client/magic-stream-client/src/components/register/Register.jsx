@@ -54,3 +54,21 @@ const Register = () => {
                 setError(response.data.error);
                 return;
             }
+            // Registration successful, redirect to login
+            navigate('/login', { replace: true });
+        } catch (err) {
+            setError('Registration failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+    useEffect(() => {
+        const fetchGenres = async () => {
+        try {
+            const response = await axiosClient.get('/genres');
+            setGenres(response.data);
+        } catch (error) {
+            console.error('Error fetching movie genres:', error);
+        }
