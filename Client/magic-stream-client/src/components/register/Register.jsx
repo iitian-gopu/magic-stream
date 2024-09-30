@@ -90,3 +90,22 @@ const Register = () => {
                     {error && <div className="alert alert-danger py-2">{error}</div>}                
                 </div>
              <Form onSubmit={handleSubmit}>
+                     <Form.Group className="mb-3">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter first name"
+                            value={firstName}
+                            onChange={e => setFirstName(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                     <Form.Group className="mb-3">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter last name"
+                            value={lastName}
+                            onChange={e => setLastName(e.target.value)}
+                            required
+                        />
