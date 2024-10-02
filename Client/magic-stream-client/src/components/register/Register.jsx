@@ -127,3 +127,22 @@ const Register = () => {
                             placeholder="Password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                     <Form.Group className="mb-3">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            required
+                            isInvalid ={!!confirmPassword && password !== confirmPassword}
+
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Passwords do not match.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group>
