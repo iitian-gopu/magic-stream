@@ -146,3 +146,21 @@ const Register = () => {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group>
+                        <Form.Select
+                            multiple
+                            value={favouriteGenres.map(g => String(g.genre_id))}
+                            onChange={handleGenreChange}
+                        >
+                            {genres.map(genre => (
+                                <option key={genre.genre_id} value={genre.genre_id} label={genre.genre_name}>
+                                    {genre.genre_name}
+                                </option>
+                            ))}
+                        </Form.Select>
+                        <Form.Text className="text-muted">
+                            Hold Ctrl (Windows) or Cmd (Mac) to select multiple genres.
+                        </Form.Text>
+                    </Form.Group>
+                     <Button
+                        variant="primary"
+                        type="submit"
