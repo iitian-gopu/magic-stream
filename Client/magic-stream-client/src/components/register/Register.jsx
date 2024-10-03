@@ -164,3 +164,21 @@ const Register = () => {
                      <Button
                         variant="primary"
                         type="submit"
+                        className="w-100 mb-2"
+                        disabled={loading}
+                        style={{fontWeight: 600, letterSpacing: 1}}
+                    >
+                        {loading ? (
+                            <>
+                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                Registering...
+                            </>
+                        ) : 'Register'}
+                    </Button>                        
+            </Form>
+            </div>           
+       </Container>
+
+    )
+}
+export default Register;
