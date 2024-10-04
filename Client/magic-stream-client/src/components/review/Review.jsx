@@ -10,3 +10,15 @@ import Spinner from '../spinner/Spinner';
 const Review = () => {
 
     const [movie, setMovie] = useState({});
+    const [loading, setLoading] = useState(false);
+    const revText = useRef();
+    const { imdb_id } = useParams();
+    const {auth,setAuth} = useAuth();
+    const axiosPrivate = useAxiosPrivate();
+
+    useEffect(() => {
+        const fetchMovie = async () => {
+            setLoading(true);
+            try {
+                const response = await axiosPrivate.get(`/movie/${imdb_id}`);
+                setMovie(response.data);
