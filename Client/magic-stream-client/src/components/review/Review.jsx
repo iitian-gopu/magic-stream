@@ -33,3 +33,15 @@ const Review = () => {
         fetchMovie();
 
     }, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        setLoading(true);
+        try {
+            
+            const response = await axiosPrivate.patch(`/updatereview/${imdb_id}`, { admin_review: revText.current.value });
+            console.log(response.data);           
+
+            setMovie(() => ({
+                ...movie,
