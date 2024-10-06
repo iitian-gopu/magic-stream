@@ -45,3 +45,14 @@ const Review = () => {
 
             setMovie(() => ({
                 ...movie,
+                admin_review: response.data?.admin_review ?? movie.admin_review,
+                ranking: {
+                    ranking_name: response.data?.ranking_name ?? movie.ranking?.ranking_name
+                }
+            }));
+
+        } catch (err) {
+            console.error(err);
+            if (err.response && err.response.status === 401) {
+                 console.error('Unauthorized access - redirecting to login');
+                 localStorage.removeItem('user');
