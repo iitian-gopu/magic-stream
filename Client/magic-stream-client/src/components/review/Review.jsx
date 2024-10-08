@@ -80,3 +80,14 @@ const Review = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-6 d-flex align-items-stretch">
+                        <div className="w-100 shadow rounded p-4 bg-light">
+                            {auth && auth.role === "ADMIN" ? (
+                                <Form onSubmit={handleSubmit}>
+                                    <Form.Group className="mb-3" controlId="adminReviewTextarea">
+                                        <Form.Label>Admin Review</Form.Label>
+                                        <Form.Control
+                                            ref={revText}
+                                            required
+                                            as="textarea"
+                                            rows={8}
+                                            defaultValue={movie?.admin_review}
