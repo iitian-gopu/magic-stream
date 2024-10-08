@@ -68,3 +68,15 @@ const Review = () => {
 
     return (
       <>
+        {loading ? (
+            <Spinner />
+        ) : (
+            <div className="container py-5">
+                <h2 className="text-center mb-4">Admin Review</h2>
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-6 d-flex align-items-center justify-content-center mb-4 mb-md-0">
+                        <div className="w-100 shadow rounded p-3 bg-white d-flex justify-content-center align-items-center">
+                            <Movie movie={movie} />
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-6 d-flex align-items-stretch">
