@@ -91,3 +91,15 @@ const Review = () => {
                                             as="textarea"
                                             rows={8}
                                             defaultValue={movie?.admin_review}
+                                            placeholder="Write your review here..."
+                                            style={{ resize: "vertical" }}
+                                        />
+                                    </Form.Group>
+                                    <div className="d-flex justify-content-end">
+                                        <Button variant="info" type="submit">
+                                            Submit Review
+                                        </Button>
+                                    </div>
+                                </Form> ):(
+                                <div className="alert alert-info">{movie.admin_review}</div>
+                            )}                           
