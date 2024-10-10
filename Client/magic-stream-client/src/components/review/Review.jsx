@@ -103,3 +103,14 @@ const Review = () => {
                                 </Form> ):(
                                 <div className="alert alert-info">{movie.admin_review}</div>
                             )}                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
+    </>      
+
+    );
+}
+
+export default Review;
