@@ -52,3 +52,57 @@ Go / Gin Controller
     │
     ▼
 LangChainGo
+    │
+    ▼
+OpenAI
+    │
+    ▼
+Ranking Label
+    │
+    ▼
+MongoDB Movie Ranking
+```
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    U[User Browser] --> R[React + Vite Client]
+    R -->|Axios REST calls| G[Go + Gin API]
+
+    G --> A[JWT Authentication Middleware]
+    A --> C[Controllers]
+
+    C --> M[(MongoDB)]
+    C --> L[LangChainGo]
+    L --> O[OpenAI API]
+
+    R --> P[React Player]
+```
+
+### Application flow
+
+```text
+React Client
+   │
+   ├── Register / Login
+   │       │
+   │       ▼
+   │   Go + Gin API
+   │       │
+   │       ├── bcrypt password hashing
+   │       ├── JWT access token
+   │       └── JWT refresh token
+   │
+   ├── Browse Movies ───────────────► MongoDB
+   │
+   ├── Recommended Movies
+   │       │
+   │       ├── User favorite genres
+   │       └── Movie ranking
+   │
+   ├── Stream Movie ────────────────► React Player
+   │
+   └── Admin Review
