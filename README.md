@@ -160,3 +160,56 @@ React Client
 ---
 
 ## 📂 Project Structure
+
+```text
+MagicStream-main/
+│
+├── Client/
+│   └── magic-stream-client/
+│       ├── public/
+│       ├── src/
+│       │   ├── api/              # Axios configuration
+│       │   ├── assets/           # Frontend static assets
+│       │   ├── components/
+│       │   │   ├── header/
+│       │   │   ├── home/
+│       │   │   ├── login/
+│       │   │   ├── movie/
+│       │   │   ├── movies/
+│       │   │   ├── recommended/
+│       │   │   ├── register/
+│       │   │   ├── review/
+│       │   │   ├── spinner/
+│       │   │   └── stream/
+│       │   ├── context/          # Authentication context
+│       │   ├── hooks/            # Custom React hooks
+│       │   ├── App.jsx
+│       │   └── main.jsx
+│       ├── package.json
+│       └── vite.config.js
+│
+├── Server/
+│   └── MagicStreamServer/
+│       ├── controllers/          # Movie and user request handlers
+│       ├── database/             # MongoDB connection helpers
+│       ├── middleware/           # Authentication middleware
+│       ├── models/               # Go data models
+│       ├── routes/               # Protected/unprotected REST routes
+│       ├── utils/                # JWT/token utilities
+│       ├── go.mod
+│       └── main.go
+│
+├── magic-stream-seed-data/
+│   ├── movies.json
+│   ├── genres.json
+│   ├── rankings.json
+│   ├── users.json
+│   ├── AddTestMovieDoc.json
+│   └── AddTestUserDoc.json
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
