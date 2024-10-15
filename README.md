@@ -106,3 +106,57 @@ React Client
    ├── Stream Movie ────────────────► React Player
    │
    └── Admin Review
+           │
+           ├── LangChainGo
+           ├── OpenAI
+           └── Ranking stored in MongoDB
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+| Technology | Purpose |
+|---|---|
+| **React 19** | Component-based frontend |
+| **JavaScript** | Client-side application logic |
+| **Vite** | Frontend development server and build tool |
+| **React Router** | Client-side routing and protected pages |
+| **Axios** | REST API communication |
+| **React Bootstrap** | UI components and responsive layout |
+| **Bootstrap 5** | Styling and responsive design |
+| **React Player** | Video/movie playback |
+| **Font Awesome** | UI icons |
+
+### Backend
+
+| Technology | Purpose |
+|---|---|
+| **Go 1.24** | Backend programming language |
+| **Gin / gin-gonic** | HTTP server and REST API framework |
+| **MongoDB Go Driver** | Database access |
+| **JWT** | Access and refresh token authentication |
+| **bcrypt** | Password hashing |
+| **validator/v10** | Request/model validation |
+| **gin-contrib/cors** | CORS configuration |
+| **godotenv** | Environment-variable loading |
+
+### AI / Generative AI
+
+| Technology | Purpose |
+|---|---|
+| **LangChainGo** | LLM integration/orchestration |
+| **OpenAI API** | AI-based review classification |
+| **Prompt Engineering** | Constraining review classification to stored ranking labels |
+
+### Database
+
+| Technology | Purpose |
+|---|---|
+| **MongoDB** | Movies, users, genres, rankings, and authentication-token storage |
+
+---
+
+## 📂 Project Structure
