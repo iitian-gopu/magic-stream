@@ -213,3 +213,57 @@ MagicStream-main/
 
 ---
 
+## 🔐 Authentication & Authorization
+
+MagicStream uses JWT-based authentication with two tokens:
+
+- **Access token** — valid for approximately 24 hours
+- **Refresh token** — valid for approximately 7 days
+
+After login, the backend sets both values as **HttpOnly cookies**. Protected API routes use authentication middleware to validate the access token and populate user information such as the user ID and role in the Gin request context.
+
+Passwords are never stored as plain text; registration hashes passwords using **bcrypt** before saving users to MongoDB.
+
+### Role-based functionality
+
+The review-update endpoint checks that the authenticated user has the `ADMIN` role before allowing an administrator review and AI-generated ranking to be stored.
+
+---
+
+## 🌐 API Endpoints
+
+The backend runs on port `8080` by default.
+
+### Public endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/hello` | Basic API health/demo endpoint |
+| `GET` | `/movies` | Fetch all movies |
+| `GET` | `/genres` | Fetch available movie genres |
+| `POST` | `/register` | Register a new user |
+| `POST` | `/login` | Authenticate a user and create JWT cookies |
+| `POST` | `/logout` | Clear stored tokens and authentication cookies |
+| `POST` | `/refresh` | Generate a new access/refresh token pair |
+
+### Protected endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/movie/:imdb_id` | Fetch one movie by IMDb ID |
+| `POST` | `/addmovie` | Add a movie for an authenticated user |
+| `GET` | `/recommendedmovies` | Get personalized recommended movies |
+| `PATCH` | `/updatereview/:imdb_id` | Update admin review and AI ranking; requires `ADMIN` role |
+
+---
+
+## 🎯 Recommendation Logic
+
+Recommendations are personalized using data already associated with the authenticated user.
+
+The server:
+
+1. Reads the user ID from the authenticated request context.
+2. Fetches the user's favorite genres from MongoDB.
+3. Finds movies whose genres match any favorite genre.
+4. Sorts matching movies by `ranking.ranking_value` in ascending order.
