@@ -267,3 +267,57 @@ The server:
 2. Fetches the user's favorite genres from MongoDB.
 3. Finds movies whose genres match any favorite genre.
 4. Sorts matching movies by `ranking.ranking_value` in ascending order.
+5. Limits the number of returned movies using `RECOMMENDED_MOVIE_LIMIT`.
+
+This keeps recommendation retrieval efficient while allowing the movie ranking generated from the review workflow to influence ordering.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Install the following before running the project:
+
+- **Go 1.24+**
+- **Node.js + npm**
+- **MongoDB** locally or a MongoDB Atlas cluster
+- **OpenAI API key** for the AI review-ranking feature
+
+---
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/iitian-gopu/magic-stream.git
+cd MagicStream-main
+```
+
+---
+
+## 2. Configure the Backend
+
+Move into the server directory:
+
+```bash
+cd Server/MagicStreamServer
+```
+
+Create a `.env` file:
+
+```env
+MONGODB_URI=mongodb://localhost:27017
+DATABASE_NAME=magicstream
+
+SECRET_KEY=replace_with_a_long_random_access_token_secret
+SECRET_REFRESH_KEY=replace_with_a_different_long_random_refresh_secret
+
+OPENAI_API_KEY=your_openai_api_key
+
+BASE_PROMPT_TEMPLATE=Classify the following movie review as exactly one of these rankings: {rankings}. Return only the ranking name. Review: 
+
+RECOMMENDED_MOVIE_LIMIT=5
+ALLOWED_ORIGINS=http://localhost:5173
+```
+
+> Keep `.env` private and never commit production secrets to GitHub.
