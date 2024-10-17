@@ -321,3 +321,56 @@ ALLOWED_ORIGINS=http://localhost:5173
 ```
 
 > Keep `.env` private and never commit production secrets to GitHub.
+
+### Important JWT environment note
+
+`SECRET_KEY` and `SECRET_REFRESH_KEY` are read by the current code when the token utility package initializes. If they are not being picked up from `.env` in your environment, export those variables before launching the Go process.
+
+Install backend dependencies:
+
+```bash
+go mod download
+```
+
+Run the backend:
+
+```bash
+go run .
+```
+
+The API should be available at:
+
+```text
+http://localhost:8080
+```
+
+---
+
+## 3. Seed MongoDB
+
+The repository contains seed files inside `magic-stream-seed-data/`.
+
+Typical collections used by the application are:
+
+- `movies`
+- `genres`
+- `rankings`
+- `users`
+
+For a local MongoDB instance, you can import the JSON arrays with `mongoimport` from the repository root:
+
+```bash
+mongoimport --db magicstream --collection movies --file magic-stream-seed-data/movies.json --jsonArray
+mongoimport --db magicstream --collection genres --file magic-stream-seed-data/genres.json --jsonArray
+mongoimport --db magicstream --collection rankings --file magic-stream-seed-data/rankings.json --jsonArray
+```
+
+You can register application users from the UI/API instead of importing the sample `users.json` file.
+
+---
+
+## 4. Configure the Frontend
+
+Open a second terminal and move into the client directory:
+
+```bash
