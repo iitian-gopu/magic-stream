@@ -374,3 +374,57 @@ You can register application users from the UI/API instead of importing the samp
 Open a second terminal and move into the client directory:
 
 ```bash
+cd Client/magic-stream-client
+```
+
+Create a `.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The Vite application will normally be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🖥️ Frontend Routes
+
+| Route | Access | Purpose |
+|---|---|---|
+| `/` | Public | Movie catalog/home page |
+| `/register` | Public | User registration |
+| `/login` | Public | User authentication |
+| `/recommended` | Protected | Personalized recommendations |
+| `/review/:imdb_id` | Protected | Movie review workflow |
+| `/stream/:yt_id` | Protected | Movie/video player |
+
+---
+
+## 🔄 Authentication Flow
+
+```text
+User Login
+   │
+   ▼
+POST /login
+   │
+   ├── Fetch user from MongoDB
+   ├── Verify bcrypt password
+   ├── Generate JWT access token
+   ├── Generate JWT refresh token
