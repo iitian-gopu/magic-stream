@@ -428,3 +428,57 @@ POST /login
    ├── Verify bcrypt password
    ├── Generate JWT access token
    ├── Generate JWT refresh token
+   ├── Persist tokens for the user
+   └── Set HttpOnly cookies
+             │
+             ▼
+       Protected Requests
+             │
+             ▼
+      Auth Middleware
+             │
+             ├── Validate token
+             ├── Read user ID
+             └── Read user role
+```
+
+---
+
+## 🧪 Useful Development Commands
+
+### Frontend
+
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run preview
+```
+
+### Backend
+
+```bash
+go mod download
+go run .
+go test ./...
+```
+
+---
+
+## 🔒 Security Practices Demonstrated
+
+- Password hashing with bcrypt
+- JWT access and refresh token separation
+- HttpOnly authentication cookies
+- Role-based authorization for admin functionality
+- Server-side request validation
+- Protected API routes through middleware
+- Configurable CORS origins
+- Environment variables for database credentials, signing secrets, and API keys
+
+---
+
+## 💡 What This Project Demonstrates
+
+MagicStream is useful as a portfolio project because it combines several real-world engineering concerns in one application:
+
