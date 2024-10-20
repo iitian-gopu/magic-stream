@@ -482,3 +482,56 @@ go test ./...
 
 MagicStream is useful as a portfolio project because it combines several real-world engineering concerns in one application:
 
+- Full-stack React + Go development
+- REST API design
+- Authentication and authorization
+- Stateful user personalization
+- MongoDB document modeling and querying
+- Generative AI / LLM API integration
+- Prompt-driven classification
+- Secure cookie-based JWT sessions
+- Protected client-side routing
+- External API integration
+- Modern frontend build tooling with Vite
+
+---
+
+## 📌 Main Technologies for Resume / LinkedIn
+
+**Go (Golang) · Gin · React.js · JavaScript · MongoDB · REST APIs · JWT Authentication · LangChainGo · OpenAI API · Generative AI · Prompt Engineering · Vite · Axios · React Router · React Bootstrap · bcrypt**
+
+---
+
+## 📚 Original Learning Reference
+
+The project was inspired by / built while following the MagicStream learning material and then can be extended as a portfolio implementation:
+
+- Video tutorial: https://youtu.be/jBf7of9JTV8
+
+---
+
+## 🔮 Possible Future Improvements
+
+- Dockerize frontend, backend, and MongoDB
+- Add Docker Compose for one-command local startup
+- Add automated unit/integration tests
+- Add GitHub Actions CI/CD
+- Add pagination and search to the movie catalog
+- Add watchlists and viewing history
+- Add richer recommendation scoring
+- Add observability and structured logging
+- Add rate limiting
+- Add production deployment configuration
+- Add API documentation with OpenAPI / Swagger
+
+---
+
+## 👤 Author
+
+**Gopal Jaiswal**
+
+GitHub: [@iitian-gopu](https://github.com/iitian-gopu)
+
+---
+
+If you find this project useful, consider giving the repository a ⭐.
